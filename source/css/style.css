@@ -1,0 +1,212 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+@-webkit-keyframes backgr {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+@keyframes backgr {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  background-color: #333;
+}
+
+.container {
+  position: relative;
+  top: -80px;
+  -webkit-transform: skewY(-200deg);
+          transform: skewY(-200deg);
+  -webkit-animation: backgr 5s linear infinite;
+          animation: backgr 5s linear infinite;
+}
+
+.cube {
+  position: relative;
+  z-index: 2;
+}
+.cube div {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+  translate: calc(-70px*var(--x)) calc(-60px*var(--y));
+}
+.cube div span {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #dcdcdc;
+  z-index: calc(1*var(--i));
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+.cube div span:hover {
+  -webkit-transition: 0s;
+  transition: 0s;
+  background-color: #ef4149;
+  -webkit-filter: drop-shadow(0 0 30px #ef4149);
+          filter: drop-shadow(0 0 30px #ef4149);
+}
+.cube div span::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  left: -40px;
+  background-color: #fff;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: skewY(45deg);
+          transform: skewY(45deg);
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+.cube div span::before:hover {
+  -webkit-transition: 0s;
+  transition: 0s;
+  background: #f75d64;
+}
+.cube div span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  left: 0px;
+  top: -40px;
+  background-color: #f2f2f2;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: skewX(45deg);
+          transform: skewX(45deg);
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+.cube div span::after:hover {
+  -webkit-transition: 0s;
+  transition: 0s;
+  background: #f14e55;
+}
+
+.container .cube:nth-child(2) {
+  z-index: 1;
+  translate: -60px -60px;
+}
+
+.container .cube:nth-child(3) {
+  z-index: 3;
+  translate: 60px 60px;
+}
+
+.container .cube div span:hover::after {
+  -webkit-transition: 0s;
+  transition: 0s;
+  background: #f75d64;
+}
+
+.container .cube div span:hover::before {
+  -webkit-transition: 0s;
+  transition: 0s;
+  background: #f14e55;
+}
